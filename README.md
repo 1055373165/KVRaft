@@ -1,5 +1,5 @@
 # 简介
-在之前 [Raft 库]([url](https://github.com/1055373165/MIT-8.624))实现的基础上，实现了分布式键值存储，提供 Get、Put、Append 操作接口。
+在之前 [Raft 库]((https://github.com/1055373165/MIT-8.624))实现的基础上，实现了分布式键值存储，提供 Get、Put、Append 操作接口。
 提供了如下能力：
 - 保证非 Get 请求幂等性，已经执行过的 Put 或者 Append 请求不会重复执行，而是从缓存中直接获取执行结果；（通过 clientId 和 SequenceId 保证唯一性）；
 - 所有待 apply 的消息都由一个单独的通道负责处理（参考 hashcorp future 结构体），并附带了请求超时处理（放在同一个 for select 中），在处理完成后异步删除无用的通道（防止阻塞主分支流程）；
