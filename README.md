@@ -6,6 +6,48 @@
 - 保证已经处理过的请求不会被重复处理（ KVServer 维护一个已经应用的索引）；
 - 崩溃恢复时无需读取 Raft 全量数据，而是从 snapshot 中快速恢复，同时支持进行 snapshot 的阈值设置。
 
+# 代码结构
+```
+.
+├── README.md
+├── go.mod
+├── kvraft
+│   ├── client.go
+│   ├── common.go
+│   ├── config.go
+│   ├── server.go
+│   ├── state_machine.go
+│   └── test_test.go
+├── labgob
+│   ├── labgob.go
+│   └── test_test.go
+├── labrpc
+│   ├── labrpc.go
+│   └── test_test.go
+├── models
+│   └── kv.go
+├── porcupine
+│   ├── bitset.go
+│   ├── checker.go
+│   ├── model.go
+│   ├── porcupine.go
+│   └── visualization.go
+├── raft
+│   ├── README.md
+│   ├── config.go
+│   ├── persister.go
+│   ├── raft.go
+│   ├── raft_application.go
+│   ├── raft_compaction.go
+│   ├── raft_election.go
+│   ├── raft_log.go
+│   ├── raft_persistence.go
+│   ├── raft_replication.go
+│   ├── test_test.go
+│   └── util.go
+└── resources
+```
+
 # 代码正确性测试
 
 执行：`go test`
